@@ -14,7 +14,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       clientID: process.env.GOOGLE_AUTH_CLIENT_ID,
       clientSecret: process.env.GOOGLE_AUTH_CLIENT_SECRET,
       callbackURL: 'http://localhost:3000/google/redirect',
-      scope: ['email', 'profile'],
+      scope: ['email', 'profile', 'https://www.googleapis.com/auth/contacts'],
     });
   }
 
@@ -25,7 +25,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       firstName: name.givenName,
       lastName: name.familyName,
       picture: photos[0].value,
-      accessToken
+      accessToken,
+      profile
     }
     done(null, user);
   }

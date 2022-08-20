@@ -4,6 +4,7 @@
 
 # Environment Variable
 .env
+credentials.json
 
 # Logs
 logs
